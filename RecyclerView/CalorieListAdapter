@@ -1,0 +1,121 @@
+package com.example.caloriecalculatorrecyclerview;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestBuilder;
+
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class CalorieListAdapter extends
+        RecyclerView.Adapter<CalorieListAdapter.ViewHolder>{
+
+    private final ArrayList<String> mImages;
+    private final ArrayList<String> mNameList;
+    private final ArrayList<String> mCalorieList;
+
+    private Context context;
+    private LayoutInflater mInflater;
+
+    public CalorieListAdapter(Context context, ArrayList<String> images,
+                              ArrayList<String> mNameList, ArrayList<String> mCalorieList) {
+        // connect to xml
+        mInflater = LayoutInflater.from(context);
+        this.context = context;
+        this.mImages = images;
+        this.mNameList = mNameList;
+        this.mCalorieList = mCalorieList;
+    }
+
+    @NonNull
+    @Override
+    public CalorieListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        // convert to view item, similar to the onCreate() method
+        View mItemView = mInflater.inflate(R.layout.calorie_list,
+                parent, false);
+        return new CalorieListAdapter.ViewHolder (mItemView, this);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull CalorieListAdapter.ViewHolder holder, int position) {
+
+        Glide.with(context)
+                .asBitmap()
+                .load(mImages.get(position))
+                .into(holder.imageView);
+
+        String mCurrentFoodName = mNameList.get(position);
+        holder.textName.setText(mCurrentFoodName);
+
+        String mCurrentCalorie = mCalorieList.get(position);
+        holder.textCalorie.setText(mCurrentCalorie);
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return mNameList.size();
+    }
+
+
+
+ // View Holder
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+
+        private final TextView textName;
+        private final TextView textCalorie;
+        private final CircleImageView imageView;
+        final CalorieListAdapter mAdapter;
+
+
+        public ViewHolder(@NonNull View itemView, CalorieListAdapter mAdapter) {
+
+            super(itemView);
+            this.mAdapter = mAdapter;
+            imageView = itemView.findViewById(R.id.image);
+            textName = itemView.findViewById(R.id.text_name);
+            textCalorie = itemView.findViewById(R.id.text_calorie);
+
+            itemView.setOnClickListener(this);
+        }
+
+        public TextView getTextNames() {
+            return textName;
+        }
+
+        public TextView getTextCalories() {
+            return textCalorie;
+        }
+
+        @Override
+        public void onClick(View v) {
+            // Get the position of the item that was clicked.
+            int mPosition = getLayoutPosition();
+            // Use that to access the affected item.
+            String elementName = mNameList.get(mPosition);
+//            String elementCalorie = mCalorieList.get(mPosition);
+            // Change the text.
+            mNameList.set(mPosition, "Clicked! " + elementName);
+//            mCalorieList.set(mPosition, "Clicked! " + elementCalorie);
+            // Notify the adapter, that the data has changed so it can
+            // update the RecyclerView to display the data.
+            mAdapter.notifyDataSetChanged();
+        }
+    }
+}
