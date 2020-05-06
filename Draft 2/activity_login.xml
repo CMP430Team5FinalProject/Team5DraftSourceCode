@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dark_wallpaper"
+    tools:context=".LoginActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calorie Calculator!"
+        android:textStyle="bold|italic"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="90dp"
+        android:layout_marginStart="40dp"
+        android:textColor="@color/colorTextPrimary"
+        android:textSize="40sp"/>
+
+    <EditText
+        android:id="@+id/login_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/input_design"
+        android:layout_margin="16dp"
+        android:hint="Phone Number"
+
+        android:textColor="@color/colorTextPrimary"
+        android:inputType="number"
+        android:layout_centerInParent="true"
+        android:textSize="24sp"/>
+
+    <EditText
+        android:id="@+id/login_password_input"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/input_design"
+        android:layout_margin="16dp"
+        android:hint="Passord"
+
+        android:textColor="@color/colorTextPrimary"
+        android:inputType="number"
+        android:layout_below="@+id/login_phone_number"
+        android:textSize="24sp"/>
+
+    <LinearLayout
+        android:id="@+id/linear_layout_1"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/login_password_input"
+        android:layout_margin="16dp">
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/remember_me_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:shadowColor="@color/colorTextPrimary"
+            android:background="@color/colorTextPrimary"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remember Me"
+            android:textColor="@color/colorTextPrimary"
+            android:layout_marginStart="8dp"/>
+
+        <TextView
+            android:id="@+id/forgot_password_link"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:text="Forgot Password"
+            android:textColor="@color/colorTextPrimary"
+            android:layout_marginStart="60dp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/login_btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Login"
+        android:textSize="16sp"
+        android:textStyle="bold|italic"
+        android:layout_margin="16dp"
+        android:textColor="@color/colorTextPrimary"
+        android:background="@drawable/input_design"
+        android:layout_below="@id/linear_layout_1"/>
+
+
+</RelativeLayout>
