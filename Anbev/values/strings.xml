@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">ProjectCMP</string>
+    <string name="calorie_counter">Calorie Counter</string>
+    <string name="powered_by_team_5">Powered By Team 5</string>
+    <string name="todo">TODO</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="not_a_member_sign_up">Not a member? SIGN UP</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="name">Name</string>
+    <string name="already_a_member_sign_in">Already a member? SIGN IN</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="username">Username</string>
+    <string name="_50">50</string>
+    <string name="carb_number">65</string>
+    <string name="new_user_sign_up">New User? SIGN UP</string>
+</resources>
